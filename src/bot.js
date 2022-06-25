@@ -4,7 +4,7 @@ import { verify } from "./utils/verify.js";
 export async function handleRequest(request) {
 
     // Handle interactions from Discord and perform the verification
-    if (new URL(request.url).pathname === "/interaction" && request.method === "POST") {
+    if (new URL(request.url).pathname === "/interactions" && request.method === "POST") {
         if (!request.headers.get("X-Signature-Ed25519") || !request.headers.get("X-Signature-Timestamp")) return new Response("NOPE", { status: 401 });
         if (!await verify(request)) return new Response("NOPE", { status: 401 });
 
@@ -44,6 +44,8 @@ export async function handleRequest(request) {
                 });
             }
         }
+    } else {
+        return new Response("HELLO", { status: 200 });
     }
 }
 
