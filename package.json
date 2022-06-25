@@ -1,0 +1,16 @@
+{
+  "name": "discord-worker",
+  "version": "0.0.0",
+  "scripts": {
+    "deploycommands_guild": "node ./slash_commands/registerGuildCommands.js"
+  },
+  "devDependencies": {
+    "wrangler": "2.0.6"
+  },
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "discord-api-types": "^0.35.0",
+    "node-fetch": "^3.2.6"
+  }
+}
