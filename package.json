@@ -5,9 +5,6 @@
     "deploycommands_guild": "node ./slash_commands/registerGuildCommands.js",
     "removecommands_guild": "node ./slash_commands/RemoveGuildCommands.js"
   },
-  "devDependencies": {
-    "wrangler": "2.0.6"
-  },
   "type": "module",
   "private": true,
   "dependencies": {
