@@ -2,7 +2,8 @@
   "name": "discord-worker",
   "version": "0.0.0",
   "scripts": {
-    "deploycommands_guild": "node ./slash_commands/registerGuildCommands.js"
+    "deploycommands_guild": "node ./slash_commands/registerGuildCommands.js",
+    "removecommands_guild": "node ./slash_commands/RemoveGuildCommands.js"
   },
   "devDependencies": {
     "wrangler": "2.0.6"
@@ -10,6 +11,7 @@
   "type": "module",
   "private": true,
   "dependencies": {
+    "@discordjs/rest": "^0.5.0",
     "discord-api-types": "^0.35.0",
     "node-fetch": "^3.2.6"
   }
