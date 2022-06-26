@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "deploycommands_guild": "node ./slash_commands/registerGuildCommands.js",
-    "removecommands_guild": "node ./slash_commands/RemoveGuildCommands.js"
+    "removecommands_guild": "node ./slash_commands/removeGuildCommands.js"
   },
   "type": "module",
   "private": true,
