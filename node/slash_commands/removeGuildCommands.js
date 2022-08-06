@@ -1,5 +1,5 @@
 import { Routes } from "discord-api-types/v10";
-import restClient from "../src/utils/restClient.js";
+import restClient from "../utils/restClient.js";
 import { clientId } from "../config.js";
 
 const guildId = "99183009621622784";

@@ -1,4 +1,4 @@
-function hex2bin(hex) {
+function hex2bin(hex: string) {
     const buf = new Uint8Array(Math.ceil(hex.length / 2));
     for (let i = 0; i < buf.length; i++) {
         buf[i] = parseInt(hex.substr(i * 2, 2), 16);
@@ -19,8 +19,8 @@ const PUBLIC_KEY = crypto.subtle.importKey(
 
 const encoder = new TextEncoder();
 
-export async function verify(request) {
-    const signature = hex2bin(request.headers.get('X-Signature-Ed25519'));
+export async function verify(request: Request) {
+    const signature = hex2bin(request.headers.get('X-Signature-Ed25519')!);
     const timestamp = request.headers.get('X-Signature-Timestamp');
     const unknown = await request.clone().text();
 
