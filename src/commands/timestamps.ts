@@ -1,10 +1,10 @@
 import { APIChatInputApplicationCommandInteraction, APIEmbed, ApplicationCommandOptionType, InteractionResponseType } from "discord-api-types/v10";
 import respond from "../utils/respond";
+import { getInteger } from "../utils/getOptions";
 
-export default (interaction: APIChatInputApplicationCommandInteraction) => {
+export default (interaction: APIChatInputApplicationCommandInteraction): Response => {
 
-    const options = interaction.data.options;
-    const timestamp = (options && options[0].type === ApplicationCommandOptionType.Number) ? options[0].value : Math.floor(new Date().getTime() / 1000);
+    const timestamp = getInteger(interaction, "date") ?? Math.floor(new Date().getTime() / 1000);
 
     const timestampEmbed: APIEmbed = {
         color: 0x2f3136,

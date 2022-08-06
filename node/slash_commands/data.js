@@ -8,8 +8,8 @@ export default [
         options: [
             {
                 name: "date",
-                description: "The UNIX timestamp in seconds. Not using this option will use the current date/time.",
-                type: ApplicationCommandOptionType.Number,
+                description: "The Unix timestamp in seconds. Not using this option will use the current date/time.",
+                type: ApplicationCommandOptionType.Integer,
                 required: false
             }
         ]
