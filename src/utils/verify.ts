@@ -8,7 +8,7 @@ function hex2bin(hex: string) {
 
 const PUBLIC_KEY = crypto.subtle.importKey(
     'raw',
-    hex2bin("8b7f86a6d651f2112880881bd040bab34df57952be2bd8790b369c40abbeac04"), // Bot's public key
+    hex2bin("8b7f86a6d651f2112880881bd040bab34df57952be2bd8790b369c40abbeac04"), // The client's public key, change before use (if anyone is reading this lol)
     {
         name: 'NODE-ED25519',
         namedCurve: 'NODE-ED25519',
@@ -21,7 +21,7 @@ const encoder = new TextEncoder();
 
 export async function verify(request: Request) {
     const signature = hex2bin(request.headers.get('X-Signature-Ed25519')!);
-    const timestamp = request.headers.get('X-Signature-Timestamp');
+    const timestamp = request.headers.get('X-Signature-Timestamp')!;
     const unknown = await request.clone().text();
 
     return await crypto.subtle.verify(

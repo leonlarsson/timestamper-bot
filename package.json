@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "scripts": {
     "deploycommands_guild": "node ./node/slash_commands/registerGuildCommands.js",
-    "removecommands_guild": "node ./node/slash_commands/removeGuildCommands.js"
+    "removecommands_guild": "node ./node/slash_commands/removeGuildCommands.js",
+    "deploycommands_global": "node ./node/slash_commands/registerGlobalCommands.js",
+    "removecommands_global": "node ./node/slash_commands/removeGlobalCommands.js"
   },
   "type": "module",
   "private": true,
   "dependencies": {
     "@discordjs/rest": "^1.0.1",
-    "discord-api-types": "^0.37.1"
+    "discord-api-types": "^0.37.1",
+    "dotenv": "^16.0.1"
   }
 }
