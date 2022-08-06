@@ -1,6 +1,7 @@
-import { APIChatInputApplicationCommandInteraction, APIEmbed, ApplicationCommandOptionType, InteractionResponseType } from "discord-api-types/v10";
+import { APIActionRowComponent, APIButtonComponent, APIChatInputApplicationCommandInteraction, APIEmbed, ComponentType, InteractionResponseType } from "discord-api-types/v10";
 import respond from "../utils/respond";
 import { getInteger } from "../utils/getOptions";
+import { buildInviteButton } from "../utils/buildButtons";
 
 export default (interaction: APIChatInputApplicationCommandInteraction): Response => {
 
@@ -19,10 +20,15 @@ export default (interaction: APIChatInputApplicationCommandInteraction): Respons
             { name: "Long Date/Time", value: `<t:${timestamp}:F>\n\`<t:${timestamp}:F>\``, inline: true },
             { name: "Relative Time", value: `<t:${timestamp}:R>\n\`<t:${timestamp}:R>\``, inline: true },
         ]
-    }
+    };
+
+    const row: APIActionRowComponent<APIButtonComponent> = {
+        type: ComponentType.ActionRow,
+        components: [buildInviteButton()]
+    };
 
     return respond({
         type: InteractionResponseType.ChannelMessageWithSource,
-        data: { embeds: [timestampEmbed] }
+        data: { embeds: [timestampEmbed], components: [row] }
     });
 }
