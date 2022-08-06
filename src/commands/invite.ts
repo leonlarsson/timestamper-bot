@@ -11,6 +11,6 @@ export default (): Response => {
 
     return respond({
         type: InteractionResponseType.ChannelMessageWithSource,
-        data: { content: `Invite this bot by clicking [here](https://discord.com/oauth2/authorize?client_id=990219994296111124&scope=applications.commands%20bot) or the button below.`, components: [row] }
+        data: { content: `Invite this bot by clicking [here](https://discord.com/oauth2/authorize?client_id=990219994296111124&scope=applications.commands) or the button below.`, components: [row] }
     });
 }
