@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@discordjs/rest": "^1.0.1",
+    "dayjs": "^1.11.4",
     "discord-api-types": "^0.37.1",
     "dotenv": "^16.0.1"
   }

@@ -11,6 +11,48 @@ export default [
                 description: "The Unix timestamp in seconds. Not using this option will use the current date/time.",
                 type: ApplicationCommandOptionType.Integer,
                 required: false
+            },
+            {
+                name: "years",
+                description: "The amount of years to add or remove.",
+                type: ApplicationCommandOptionType.Integer,
+                required: false
+            },
+            {
+                name: "months",
+                description: "The amount of months to add or remove.",
+                type: ApplicationCommandOptionType.Integer,
+                required: false
+            },
+            {
+                name: "weeks",
+                description: "The amount of weeks to add or remove.",
+                type: ApplicationCommandOptionType.Integer,
+                required: false
+            },
+            {
+                name: "days",
+                description: "The amount of days to add or remove.",
+                type: ApplicationCommandOptionType.Integer,
+                required: false
+            },
+            {
+                name: "hours",
+                description: "The amount of hours to add or remove.",
+                type: ApplicationCommandOptionType.Integer,
+                required: false
+            },
+            {
+                name: "minutes",
+                description: "The amount of minutes to add or remove.",
+                type: ApplicationCommandOptionType.Integer,
+                required: false
+            },
+            {
+                name: "seconds",
+                description: "The amount of seconds to add or remove.",
+                type: ApplicationCommandOptionType.Integer,
+                required: false
             }
         ]
     },
