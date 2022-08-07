@@ -1,6 +1,6 @@
 # Discord Timestamp Bot
 
-**Note: This is mostly a WIP test and a personal learning session.**
+**Note: This is mostly a WIP test and a personal learning session. You should probably not use this bot.**
 
 ### [Invite this bot](https://discord.com/oauth2/authorize?client_id=990219994296111124&scope=applications.commands).
 
