@@ -5,6 +5,7 @@ import utc from "dayjs/plugin/utc";
 import respond from "../../utils/respond";
 import { getInteger, getSubcommand } from "../../utils/getOptions";
 import { buildInviteButton } from "../../utils/buildButtons";
+import buildTimestampEmbedFields from "../../utils/buildTimestampEmbedFields";
 dayjs.extend(objectSupport);
 dayjs.extend(utc);
 
@@ -27,15 +28,7 @@ export default (interaction: APIChatInputApplicationCommandInteraction): Respons
         title: `Timestamps for \`${timestamp}\``,
         description: `Year: **${year}**, Month: **${month}**, Day: **${day}**, Hour: **${hour}**, Minute: **${minute}**, Second: **0**`,
         footer: { text: "*default" },
-        fields: [
-            { name: "Short Time", value: `<t:${timestamp}:t>\n\`<t:${timestamp}:t>\``, inline: true },
-            { name: "Long Time", value: `<t:${timestamp}:T>\n\`<t:${timestamp}:T>\``, inline: true },
-            { name: "Short Date", value: `<t:${timestamp}:d>\n\`<t:${timestamp}:d>\``, inline: true },
-            { name: "Long Date", value: `<t:${timestamp}:D>\n\`<t:${timestamp}:D>\``, inline: true },
-            { name: "Short Date/Time*", value: `<t:${timestamp}:f>\n\`<t:${timestamp}:f>\`\n\`<t:${timestamp}>\``, inline: true },
-            { name: "Long Date/Time", value: `<t:${timestamp}:F>\n\`<t:${timestamp}:F>\``, inline: true },
-            { name: "Relative Time", value: `<t:${timestamp}:R>\n\`<t:${timestamp}:R>\``, inline: true },
-        ]
+        fields: buildTimestampEmbedFields(timestamp)
     };
 
     const row: APIActionRowComponent<APIButtonComponentWithURL> = {
