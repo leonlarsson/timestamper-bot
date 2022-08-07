@@ -1,16 +1,28 @@
-import { APIChatInputApplicationCommandInteraction, ApplicationCommandOptionType } from "discord-api-types/v10";
+import {
+    ApplicationCommandOptionType,
+    APIApplicationCommandInteractionDataOption,
+    APIApplicationCommandInteractionDataSubcommandOption,
+    APIApplicationCommandInteractionDataIntegerOption,
+    APIApplicationCommandInteractionDataStringOption,
+    APIApplicationCommandInteractionDataBooleanOption
+} from "discord-api-types/v10";
 
-export const getString = (interaction: APIChatInputApplicationCommandInteraction, optionName: string): string | null => {
-    const option = interaction.data.options?.find(opt => opt.name === optionName);
-    return option?.type === ApplicationCommandOptionType.String ? option.value : null;
+export const getString = (options: APIApplicationCommandInteractionDataOption[] | undefined, optionName: string): string | null => {
+    const option = options?.find((opt): opt is APIApplicationCommandInteractionDataStringOption => opt.name === optionName);
+    return option?.value ?? null;
 }
 
-export const getInteger = (interaction: APIChatInputApplicationCommandInteraction, optionName: string): number | null => {
-    const option = interaction.data.options?.find(opt => opt.name === optionName);
-    return option?.type === ApplicationCommandOptionType.Integer ? option.value : null;
+export const getInteger = (options: APIApplicationCommandInteractionDataOption[] | undefined, optionName: string): number | null => {
+    const option = options?.find((opt): opt is APIApplicationCommandInteractionDataIntegerOption => opt.name === optionName);
+    return option?.value ?? null;
 }
 
-export const getBoolean = (interaction: APIChatInputApplicationCommandInteraction, optionName: string): boolean | null => {
-    const option = interaction.data.options?.find(opt => opt.name === optionName);
-    return option?.type === ApplicationCommandOptionType.Boolean ? option.value : null;
+export const getBoolean = (options: APIApplicationCommandInteractionDataOption[] | undefined, optionName: string): boolean | null => {
+    const option = options?.find((opt): opt is APIApplicationCommandInteractionDataBooleanOption => opt.name === optionName);
+    return option?.value ?? null;
+}
+
+export const getSubcommand = (options: APIApplicationCommandInteractionDataOption[] | undefined): APIApplicationCommandInteractionDataSubcommandOption | null => {
+    const option = options?.find((opt): opt is APIApplicationCommandInteractionDataSubcommandOption => opt.type === ApplicationCommandOptionType.Subcommand);
+    return option ?? null;
 }

@@ -5,10 +5,12 @@ import {
     APIPingInteraction,
     APIChatInputApplicationCommandInteraction
 } from "discord-api-types/v10";
-import timestampsCommand from "./commands/timestamps";
+import timestampsCreateCommand from "./commands/timestamps/timestamps_create";
+import timestampsNowCommand from "./commands/timestamps/timestamps_now";
 import inviteCommand from "./commands/invite";
 import respond from "./utils/respond";
 import { verify } from "./utils/verify";
+import { getSubcommand } from "./utils/getOptions";
 
 export default {
     async fetch(request: Request): Promise<Response> {
@@ -33,14 +35,20 @@ export default {
             // Handle commands
             switch (interaction.data.name) {
                 case "timestamps":
-                    return timestampsCommand(interaction)
+                    const subcommand = getSubcommand(interaction.data.options);
+                    if (subcommand?.name === "create") return timestampsCreateCommand(interaction);
+                    if (subcommand?.name === "now") return timestampsNowCommand(interaction);
+                    return respond({
+                        type: InteractionResponseType.ChannelMessageWithSource,
+                        data: { content: "Unknown subcommand on `/timestamps`" }
+                    });
                 case "invite":
-                    return inviteCommand()
+                    return inviteCommand();
                 default:
                     return respond({
                         type: InteractionResponseType.ChannelMessageWithSource,
                         data: { content: "Unknown command." }
-                    })
+                    });
             }
         }
 

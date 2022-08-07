@@ -6,7 +6,8 @@
 
 Commands:
 
-- /timestamps
+- /timestamps create
+- /timestamps now
 - /invite
 
 ## Hosting

@@ -1,20 +1,22 @@
-import { APIActionRowComponent, APIButtonComponent, APIChatInputApplicationCommandInteraction, APIEmbed, ComponentType, InteractionResponseType } from "discord-api-types/v10";
+import { APIActionRowComponent, APIButtonComponentWithURL, APIChatInputApplicationCommandInteraction, APIEmbed, ComponentType, InteractionResponseType } from "discord-api-types/v10";
 import dayjs from "dayjs";
-import respond from "../utils/respond";
-import { getInteger } from "../utils/getOptions";
-import { buildInviteButton } from "../utils/buildButtons";
+import respond from "../../utils/respond";
+import { getInteger, getSubcommand } from "../../utils/getOptions";
+import { buildInviteButton } from "../../utils/buildButtons";
 
 export default (interaction: APIChatInputApplicationCommandInteraction): Response => {
 
+    const options = getSubcommand(interaction.data.options)?.options;
+
     // Get original timestamp (selected "date" or the current time) in seconds
-    const originalTimestamp = getInteger(interaction, "date") ?? Math.floor(new Date().getTime() / 1000);
-    const yearsOption = getInteger(interaction, "years");
-    const monthsOption = getInteger(interaction, "months");
-    const weeksOption = getInteger(interaction, "weeks");
-    const daysOption = getInteger(interaction, "days");
-    const hoursOption = getInteger(interaction, "hours");
-    const minutesOption = getInteger(interaction, "minutes");
-    const secondsOption = getInteger(interaction, "seconds");
+    const originalTimestamp = getInteger(options, "date") ?? Math.floor(new Date().getTime() / 1000);
+    const yearsOption = getInteger(options, "years");
+    const monthsOption = getInteger(options, "months");
+    const weeksOption = getInteger(options, "weeks");
+    const daysOption = getInteger(options, "days");
+    const hoursOption = getInteger(options, "hours");
+    const minutesOption = getInteger(options, "minutes");
+    const secondsOption = getInteger(options, "seconds");
 
     // Create the dayjs object, and perform time modifiers
     let newTime = dayjs.unix(originalTimestamp);
@@ -44,7 +46,7 @@ export default (interaction: APIChatInputApplicationCommandInteraction): Respons
         ]
     };
 
-    const row: APIActionRowComponent<APIButtonComponent> = {
+    const row: APIActionRowComponent<APIButtonComponentWithURL> = {
         type: ComponentType.ActionRow,
         components: [buildInviteButton()]
     };
