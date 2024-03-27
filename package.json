@@ -10,9 +10,9 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "@discordjs/rest": "^1.0.1",
-    "dayjs": "^1.11.4",
-    "discord-api-types": "^0.37.1",
-    "dotenv": "^16.0.1"
+    "@discordjs/rest": "^2.2.0",
+    "dayjs": "^1.11.10",
+    "discord-api-types": "^0.37.76",
+    "dotenv": "^16.4.5"
   }
 }
